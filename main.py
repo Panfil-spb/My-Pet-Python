@@ -22,7 +22,7 @@ class Critter(object):
             m = "неплохо"
         elif 11 <= happy <= 15:
             m = "плохо"
-        elif 16 <= happy <= 20
+        elif 16 <= happy <= 20:
             m = "ужасно"
         return m
 
@@ -39,3 +39,42 @@ class Critter(object):
 
     def play(self, game = 4):
         print("Уиии!")
+        self.boredom -= game
+        self.__pass_time()
+        if(self.boredom < 0):
+            self.boredom = 0
+
+def menu():
+    print("\tМеню\n"
+          "1 - Узнать как дела\n"
+          "2 - Поиграть\n"
+          "3 - Покормить\n"
+          "0 - Выход\n")
+
+
+def main():
+    while 1:
+        Name = str(input("Введите имя вашего питомца: "))
+        if Name == "":
+            print("У вашего питомца должно быть имя!")
+        else:
+            break
+    myPet = Critter(Name)
+    myPet.talk()
+    while 1:
+        menu()
+        choise = str(input("Ваш выбор: "))
+        if choise == '1':
+            myPet.talk()
+        elif choise == '2':
+            myPet.play()
+        elif choise == '3':
+            myPet.feeding()
+        elif choise == '0':
+            print("\nДосвидания!")
+            break
+        else:
+            print("\nВведите номер из списка!\n")
+
+
+main()
