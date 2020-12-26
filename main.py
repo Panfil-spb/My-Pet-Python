@@ -30,4 +30,12 @@ class Critter(object):
         print("Привет! Меня зовут " + self.name + ". Сейчас я себя чувствую себя " + self.mood + ".")
         self.__pass_time()
 
-    def feeding(self):
+    def feeding(self, food = 4):
+        print("Мрррр... Спасибо!")
+        self.hunger -= food
+        self.__pass_time()
+        if self.hunger < 0:
+            self.hunger = 0
+
+    def play(self, game = 4):
+        print("Уиии!")
